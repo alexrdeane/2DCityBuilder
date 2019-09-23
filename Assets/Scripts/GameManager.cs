@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour {
 
 	public Text goldText;
 	public Text peopleText;
+	public Image selectedBuildingImage;
 
+	int selectedIndex = 0;
 	BuildingObject selectedBuilding;
 
 	void Awake() {
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Start() {
-		selectedBuilding = buildings[0];
+		selectedBuilding = buildings[selectedIndex];
 
 		SpawnTiles();
 	}
@@ -48,6 +50,16 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
+		if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+			selectedIndex = (selectedIndex - 1 + buildings.Length) % buildings.Length;
+			selectedBuilding = buildings[selectedIndex];
+			selectedBuildingImage.sprite = selectedBuilding.sprite;
+		}
+		if (Input.GetKeyDown(KeyCode.RightArrow)) {
+			selectedIndex = (selectedIndex + 1) % buildings.Length;
+			selectedBuilding = buildings[selectedIndex];
+			selectedBuildingImage.sprite = selectedBuilding.sprite;
+		}
 		//if (Input.GetMouseButtonDown(0)) {
 		//	Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		//	RaycastHit2D hit = Physics2D.Raycast(mousePos, new Vector2(0, .01f), 0.01f);
