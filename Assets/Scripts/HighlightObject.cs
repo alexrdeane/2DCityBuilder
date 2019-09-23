@@ -4,11 +4,12 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(MeshRenderer))]
-public class HighlighObject : MonoBehaviour
+public class HighlightObject : MonoBehaviour
 {
     public float animationTime = 1f;
     public float threshold = 1.5f;
 
+    private HighlightController controller;
     private Material material;
     private Color normalColor;
     private Color selectedColor;
@@ -16,6 +17,7 @@ public class HighlighObject : MonoBehaviour
     private void Awake()
     {
         material = GetComponent<MeshRenderer>().material;
+        controller = FindObjectOfType<HighlightController>();
 
         normalColor = material.color;
         selectedColor = new Color
@@ -45,5 +47,10 @@ public class HighlighObject : MonoBehaviour
     {
         iTween.Stop(gameObject);
         material.color = normalColor;
+    }
+
+    private void OnMouseDown()
+    {
+        controller.SelectObject(this);
     }
 }
