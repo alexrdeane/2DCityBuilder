@@ -26,8 +26,24 @@ public class HighlighObject : MonoBehaviour
         );
     }
 
+    void Start()
+    {
+        StartHighlight();     
+    }
+
     public void StartHighlight()
     {
+        iTween.ColorTo(gameObject, iTween.Hash(
+            "color", selectedColor,
+            "time", animationTime,
+            "easytype", iTween.EaseType.linear,
+            "looptype", iTween.LoopType.pingPong
+         ));
+    }
 
+    public void StopHighlight()
+    {
+        iTween.Stop(gameObject);
+        material.color = normalColor;
     }
 }

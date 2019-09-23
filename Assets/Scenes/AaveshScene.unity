@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationTime: 1
-  threshold: 1.5
+  threshold: 2
 --- !u!1 &236751323
 GameObject:
   m_ObjectHideFlags: 0
