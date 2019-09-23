@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Resources : MonoBehaviour
+public class ResourceManagement : MonoBehaviour
 {
     public int money = 0;
     public int hourMoney = 15;

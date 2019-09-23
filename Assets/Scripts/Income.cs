@@ -22,7 +22,7 @@ public class Income : MonoBehaviour
         {
             // GetComponent<Bank>().
             AddIncome(payment); // Finds the "bank" and adds money
-            Debug.Log("We got money"); // Testing to see if it works
+          //  Debug.Log("We got money"); // Testing to see if it works
             nextIncomeTime = Time.time + incomeTime; // The next income will occur after the next income time has passed
         }
         UpdatePayment();
