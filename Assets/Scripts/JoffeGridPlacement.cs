@@ -52,18 +52,17 @@ public class JoffeGridPlacement : MonoBehaviour
                         tiles.Add(clone.transform);
                         // increase the placement pos.x by the tilespacing var
                         placementPosition.x += tileSpacing;
-                        // increment tilecount and return it after incrementing
-                       
+                        // increment tilecount and return it after incrementing                      
                         ++tileCount;
                        
-                    }
-                    
+                    }         
+                    // call offset function
                     offsetfunction();
+                    // invert bool
                     offset = !offset;
                     // if counter is over gridZ set the placementpos.x to 0 and increase the placementpos.z by the tilespacing and reset counter
                     if (tileCount >= gridSizeZ )
-                    {
-                       
+                    {                      
                         placementPosition.x = 0;
                         placementPosition.z += tileSpacing;                    
                         tileCount = 0;
@@ -71,12 +70,8 @@ public class JoffeGridPlacement : MonoBehaviour
                   
                     // set bool to false when the counter is <= the list capacity
                     if (tiles.Count <= tiles.Capacity)
-                    {
-                       // placementPosition.x = 0;
-                      //  placementPosition.y = 0;
-                      //  placementPosition.z = 0;
-                        spawnTiles = false;
-                      //  spawnInnerTiles = true;
+                    {                   
+                        spawnTiles = false;                     
                     }
                 }
             }
@@ -86,12 +81,14 @@ public class JoffeGridPlacement : MonoBehaviour
     }
    void offsetfunction()
     {
+        //  when true set the next tile's position to be 2.5 less on the x axis and 2.5 more on the z
         if (offset == true)
         {
             placementPosition.x -= 2.5f;
             placementPosition.z += 2.5f;
             Debug.Log("increase");
         }
+        // when false reduce the x and z of the next tile by 2.5
        else
         {
             placementPosition.x -= 2.5f;
