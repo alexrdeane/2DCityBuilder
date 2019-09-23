@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3ab6d1c965a02468a76049cd72dbbc, type: 3}
   m_Name: House1
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 4c832e751bcc3ef4abcdee59119eb1b5, type: 3}
+  sprite: {fileID: 21300002, guid: 8f32214bd6d49d14bbd21d8803377ec6, type: 3}
   buildingType: 0
-  initialCost: 0
-  maintainenceCost: 0
-  people: 0
+  initialCost: 5
+  maintainenceCost: 1
+  people: 3
+  energyConsumption: 0
+  happiness: 0
+  happinessRange: 0

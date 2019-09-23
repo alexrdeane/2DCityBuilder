@@ -9,9 +9,9 @@ public class BuildingObject : ScriptableObject {
 	public int initialCost;
 	public int maintainenceCost;
 	public int people;
-	//public int energyConsumption;
-	//public int happiness;
-	//public int happinessRange;
+	public int energyConsumption;
+	public int happiness;
+	public int happinessRange;
 }
 
 public enum BuildingType {

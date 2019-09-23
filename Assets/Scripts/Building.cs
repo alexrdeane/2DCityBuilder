@@ -14,9 +14,9 @@ public class Building : MonoBehaviour {
 	int initialCost;
 	int maintainenceCost;
 	int people;
-	//int energyConsumption;
-	//int happiness;
-	//int happinessRange;
+	int energyConsumption;
+	int happiness;
+	int happinessRange;
 
 	void Start() {
 
@@ -27,11 +27,13 @@ public class Building : MonoBehaviour {
 		initialCost = buildingObject.initialCost;
 		maintainenceCost = buildingObject.maintainenceCost;
 		people = buildingObject.people;
-		//energyConsumption = buildingObject.energyConsumption;
-		//happiness = buildingObject.happiness;
-		//happinessRange = buildingObject.happinessRange;
+		energyConsumption = buildingObject.energyConsumption;
+		happiness = buildingObject.happiness;
+		happinessRange = buildingObject.happinessRange;
 
-		spriteRenderer.sortingOrder = -(int)transform.position.y;
+		spriteRenderer.sprite = sprite;
+
+		spriteRenderer.sortingOrder = -(int)Mathf.Floor(transform.position.y/0.175f);
 		
 	}
 
