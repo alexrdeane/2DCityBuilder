@@ -1,20 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
 	public Building buildingPrefab;
+	public GameObject tilePrefab;
 	public BuildingObject[] buildings;
+
+	public int gold;
+	public int people;
+
+	public Text goldText;
+	public Text peopleText;
 
 	BuildingObject selectedBuilding;
 
+	void Awake() {
+		gold = 200;
+	}
+
 	void Start() {
 		selectedBuilding = buildings[0];
+
+		SpawnTiles();
+	}
+
+	void SpawnTiles() {
+		for (int x = -5; x <= 5; x++) {
+			for (int y = -20; y <= 20; y++) {
+				float x2 = x;
+				if (y % 2 == 0) x2 += .5f;
+				Instantiate(tilePrefab, new Vector3(x2, y*0.35f*.5f, 0f), Quaternion.identity);
+			}
+		}
 	}
 
 	public void Place(Vector2 position) {
-		Instantiate(buildingPrefab, position, Quaternion.identity).buildingObject = selectedBuilding;
+		if (gold >= selectedBuilding.initialCost) {
+			Instantiate(buildingPrefab, position, Quaternion.identity).buildingObject = selectedBuilding;
+			gold -= selectedBuilding.initialCost;
+			people += selectedBuilding.people;
+			goldText.text = gold.ToString();
+			peopleText.text = people.ToString();
+		}
 	}
 
 	void Update() {
