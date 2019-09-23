@@ -33,8 +33,8 @@ public class Building : MonoBehaviour {
 
 		spriteRenderer.sprite = sprite;
 
-		spriteRenderer.sortingOrder = -(int)Mathf.Floor(transform.position.y/0.175f);
-		
+		spriteRenderer.sortingOrder = -(int)Mathf.Floor(transform.position.y*4/0.35f);
+		transform.position = new Vector3(transform.position.x, transform.position.y, -spriteRenderer.sortingOrder*0.01f);
 	}
 
 	void Update() {
